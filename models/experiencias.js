@@ -12,7 +12,7 @@ exports.index = (done) => {
 
 //EXPERIENCIAS BY CATEGORIA
 exports.experienciaByCategoria = (foodType, done) => {
-    db.get().query('SELECT * FROM experiencias WHERE food_type=?', [foodType], (err, rows) => {
+    db.get().query('SELECT e.title, e.id_experiencia, e.price, e.availability, e.number_invitados, e.food_type, e.city, e.main_image, c.name FROM experiencias e, chefs_experiencias ce, chefs c WHERE e.id_experiencia = ce.experiencia_id AND c.id_chef = ce.chef_id AND e.food_type = ?', [foodType], (err, rows) => {
         if (err) return done(err, null)
         done(null, rows)
     })
