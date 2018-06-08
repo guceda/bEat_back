@@ -20,13 +20,24 @@ exports.create = ({email, password, name, surname, age} ,done) =>{
 }
 
 
-//BUSCAMOS CHEF POR USUARIO Y CONTRASEÑA
-/* Para llamar a esta función: 
-chefs.show(3,(err, rows)=>{ }) */
-
-exports.show = (email, password, done)=>{
-    db.get().query('SELECT * FROM chefs WHERE email=? AND password=?', [email, password], (err, rows)=>{
+//BUSCAMOS CHEF POR EMAIL
+/* Para llamar a esta función: */
+exports.login = (email, done)=>{
+    db.get().query('SELECT * FROM chefs WHERE email=?', [email], (err, chef)=>{
         if(err) return done(err, null)
-        done(null, rows[0])
+        done(null, chef)
+        console.log(chef);
+        
+    })
+}
+
+
+//BUSCAMOS CHEF POR EMAIL PARA REGISTRO
+exports.checkRegistro = (email, done)=>{
+    db.get().query('SELECT * FROM chefs WHERE email=?', [email], (err, chef)=>{
+        if(err) return done(err, null)
+        done(null, chef)
+        console.log(chef);
+        
     })
 }

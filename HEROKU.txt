@@ -1,0 +1,13 @@
+HEROKU
+
+Quitar el nodemon
+Para ver errores: heroku logs
+
+
+BASE DE DATOS:
+mysql://b7fffca44757a7:48320c76@eu-cdbr-west-02.cleardb.net/heroku_a61dbc29b5753cb?reconnect=true
+
+user: b7fffca44757a7
+password: 48320c76
+host: eu-cdbr-west-02.cleardb.net
+database (defaultSCHEMA): heroku_a61dbc29b5753cb
