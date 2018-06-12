@@ -32,7 +32,6 @@ exports.checkRegistro = (email, done)=>{
     db.get().query('SELECT * FROM invitados WHERE email=?', [email], (err, inv)=>{
         if(err) return done(err, null)
         done(null, inv)
-        console.log(inv);
-        
+        console.log(inv); 
     })
 }

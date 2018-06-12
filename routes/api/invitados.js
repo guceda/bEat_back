@@ -44,6 +44,7 @@ router.post('/login', (req, res) =>{
     })
 })
 
+
 //CHECK REGISTRO
 //Ruta:api/invitados/email/
 router.post('/email', (req, res)=>{

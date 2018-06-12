@@ -16,6 +16,7 @@ exports.create = ({email, password, name, surname, age} ,done) =>{
     db.get().query('INSERT into chefs (email, password, name, surname, age) VALUES (?, ?, ?, ?, ?)', values, (err, result)=>{
         if(err) return done(err, null)
         done(null, result)
+        console.log(result)
     })
 }
 
