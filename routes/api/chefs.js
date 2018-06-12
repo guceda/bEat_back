@@ -12,6 +12,7 @@ router.get('/index', (req, res) => {
     })
 })
 
+
 //LOGIN CHEFS
 //Ruta:api/chefs/login
 router.post('/login', (req, res) => {
@@ -29,33 +30,28 @@ router.post('/login', (req, res) => {
     })
 })
 
+
 //NUEVO CHEF
 //Ruta:/api/chefs/new
 router.post('/new', (req, res) => {
-    modelChefs.create({
-        email: req.body.email,
-        password: req.body.password,
-        name: req.body.name,
-        surname: req.body.surname,
-        age: req.body.age
-    }, (err, result) => {
-        if (err) console.log(err.message)
-        res.json({ success: 'registro CHEF completado' })
-    })
-})
-
-//CHECK REGISTRO
-//Ruta:api/chefs/email/
-router.post('/email', (req, res) => {
     modelChefs.checkRegistro(req.body.email, (err, result) => {
-        if (err) return console.log(err.message)
         if (result.length === 0) {
-            res.json({ error: 'No existe ningún usuario con este email' })
+            modelChefs.create({
+                email: req.body.email,
+                password: req.body.password,
+                name: req.body.name,
+                surname: req.body.surname,
+                age: req.body.age
+            }, (err, resultado) => {
+                if (err) console.log(err.message)
+                res.json(resultado.insertId)
+            })
         } else {
-            res.json(result[0])
+            res.json({ERROR_NODE:'el email ya existe'})
         }
     })
 })
+
 
 module.exports = router;
 

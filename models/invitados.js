@@ -12,8 +12,12 @@ exports.index = (done) => {
 exports.create = ({email, password, name, surname, age} ,done) =>{
     let values = [email, password, name, surname, age]
     db.get().query('INSERT into invitados (email, password, name, surname, age) VALUES (?, ?, ?, ?, ?)', values, (err, result)=>{
-        if(err) return done(err, null)
+        if(err) {
+            return done(err, null)
+        }else{
         done(null, result)
+        console.log(result.insertId)
+        }
     })
 }
 
